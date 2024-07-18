@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: gcr.io/kubernetes-426007/awesome_cats_backend:v1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PGHOST
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: hostname
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: username
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        - name: PGDATABASE
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: database

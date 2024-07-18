@@ -1,0 +1,6 @@
+[submodule "awesome_cats_backend"]
+	path = awesome_cats_backend
+	url = https://github.com/ayperi97/Final-project.git
+[submodule "awesome_cats_frontend"]
+	path = awesome_cats_frontend
+	url = https://github.com/ayperi97/Final-project.git
